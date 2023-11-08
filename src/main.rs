@@ -1,11 +1,14 @@
-use ferris_says::say; //using the crate
-use std::io::{stdout, BufWriter};
+//use ferris_says::say; //using the crate
+use std::{fs, collections::HashMap};
 
 fn main(){
-    let stdout = stdout();
-    let message = String::from("Hello fellow Rustaceans! It's the Rust World!");
-    let width = message.chars().count();
+    let data = fs::read_to_string("./sample.json")
+        .unwrap();
 
-    let mut writer = BufWriter::new(stdout.lock());
-    say(&message, width, &mut writer).unwrap();
+    let json: serde_json::Value = serde_json::from_str(&data)
+        .expect("JSON does not have correct format");
+
+    //dbg!(json);
+
+    dbg!(json.as_object());
 }
