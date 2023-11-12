@@ -1,5 +1,6 @@
 //use ferris_says::say; //using the crate
-use std::{fs, collections::HashMap};
+use std::fs;
+use serde_json;
 
 fn main(){
     let data = fs::read_to_string("./sample.json")
@@ -11,4 +12,6 @@ fn main(){
     //dbg!(json);
 
     dbg!(json.as_object());
+
+    //Analyz json
 }
